@@ -6,7 +6,7 @@ public class CloneMovement : MonoBehaviour
 {
     private float Horz;
     private float speed = 4f;
-    private float JumpingPower = 6f;
+    private float JumpingPower = 5.7f;
     private bool IsFacingRight = true;
 
     [SerializeField] private Rigidbody2D RB;
