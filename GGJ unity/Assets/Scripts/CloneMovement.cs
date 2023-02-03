@@ -29,6 +29,11 @@ public class CloneMovement : MonoBehaviour
             RB.velocity = new Vector2(RB.velocity.x, RB.velocity.y * 0.5f);
         }
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Destroy(gameObject);
+        }
+
         Flip();
     }
 
