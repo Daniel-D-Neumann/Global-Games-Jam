@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class CloneMovement : MonoBehaviour
 {
     private float Horz;
     private float speed = 4f;
-    private float JumpingPower = 7f;
+    private float JumpingPower = 6f;
     private bool IsFacingRight = true;
 
     [SerializeField] private Rigidbody2D RB;
     [SerializeField] private Transform FloorCheck;
     [SerializeField] private LayerMask FloorLayer;
-    [SerializeField] private LayerMask CloneLayer;
-
+    
 
     // Update is called once per frame
     void Update()
@@ -21,11 +20,6 @@ public class PlayerMovement : MonoBehaviour
         Horz = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            RB.velocity = new Vector2(RB.velocity.x, JumpingPower);
-        }
-
-        if (Input.GetButtonDown("Jump") && IsOnClone())
         {
             RB.velocity = new Vector2(RB.velocity.x, JumpingPower);
         }
@@ -47,11 +41,6 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics2D.OverlapCircle(FloorCheck.position, 0.2f, FloorLayer);
 
-    }
-
-    private bool IsOnClone()
-    {
-        return Physics2D.OverlapCircle(FloorCheck.position, 0.2f, CloneLayer);
     }
 
     private void Flip()
