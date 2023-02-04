@@ -8,11 +8,18 @@ public class CloneMovement : MonoBehaviour
     private float speed = 4f;
     private float JumpingPower = 5.7f;
     private bool IsFacingRight = true;
+    private Animator CloneAnims;
 
     [SerializeField] private Rigidbody2D RB;
     [SerializeField] private Transform FloorCheck;
     [SerializeField] private LayerMask FloorLayer;
-    
+
+    private enum MovementState { idle, running, jumping, falling }
+
+    private void Start()
+    {
+        CloneAnims = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -33,6 +40,8 @@ public class CloneMovement : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        UpdateAnimationState();
 
         Flip();
     }
@@ -57,6 +66,35 @@ public class CloneMovement : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+
+    private void UpdateAnimationState()
+    {
+        MovementState state;
+
+        if (Horz > 0f)
+        {
+            state = MovementState.running;
+        }
+        else if (Horz < 0f)
+        {
+            state = MovementState.running;
+        }
+        else
+        {
+            state = MovementState.idle;
+        }
+
+        if (RB.velocity.y > .1f)
+        {
+            state = MovementState.jumping;
+        }
+        else if (RB.velocity.y < -.1f)
+        {
+            state = MovementState.falling;
+        }
+
+        CloneAnims.SetInteger("CurrentState", (int)state);
     }
 
 }
