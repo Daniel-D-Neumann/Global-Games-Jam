@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -42,6 +43,10 @@ public class PlayerMovement : MonoBehaviour
             RB.velocity = new Vector2(RB.velocity.x, RB.velocity.y * 0.5f);
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Level Select");
+        }
         UpdateAnimationState();
 
         Flip();
