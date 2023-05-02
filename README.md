@@ -15,6 +15,6 @@ This is the repo for the Global Games Jam game Back-Track created by Daniel Neum
 4. Contact us with any proposed chages, we will review them and if they are positive additions we will add them
 
 ### Socials
-- [Daniel Neumann](daniel-d-neumann.github.io)
-- [Sage Ekpang](sageekpang.github.io)
-- [Sean Tan](seanrtan.github.io)
+- [Daniel Neumann](https://daniel-d-neumann.github.io)
+- [Sage Ekpang](https://sageekpang.github.io)
+- [Sean Tan](https://seanrtan.github.io)
